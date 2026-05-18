@@ -1,0 +1,52 @@
+# Agent Configuration
+# DeFi Guardian AI
+
+orchestrator:
+  max_concurrent_agents: 5
+  agent_timeout: 120
+  retry_attempts: 3
+
+agents:
+  contract_auditor:
+    model: mimo-v2.5-pro
+    max_tokens: 4096
+    temperature: 0.1
+    priority: critical
+
+  liquidity_monitor:
+    model: mimo-v2.5-pro
+    max_tokens: 2048
+    temperature: 0.1
+    priority: high
+    poll_interval: 30  # seconds
+
+  token_economics:
+    model: mimo-v2.5-pro
+    max_tokens: 3072
+    temperature: 0.1
+    priority: high
+
+  whale_tracker:
+    model: mimo-v2.5-lite  # faster for high-frequency monitoring
+    max_tokens: 2048
+    temperature: 0.1
+    priority: medium
+    poll_interval: 10
+
+  risk_reporter:
+    model: mimo-v2.5-pro
+    max_tokens: 4096
+    temperature: 0.2
+    priority: critical
+
+alerts:
+  telegram:
+    enabled: true
+    min_risk_score: 60  # only alert on elevated+ risk
+  
+  risk_thresholds:
+    low: 20
+    moderate: 40
+    elevated: 60
+    high: 80
+    critical: 90

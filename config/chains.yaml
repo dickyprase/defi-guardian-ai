@@ -1,0 +1,48 @@
+# Supported Blockchain Networks
+
+chains:
+  ethereum:
+    name: Ethereum Mainnet
+    chain_id: 1
+    native_token: ETH
+    explorer: https://etherscan.io
+    dex:
+      - uniswap_v2
+      - uniswap_v3
+      - sushiswap
+
+  bsc:
+    name: BNB Smart Chain
+    chain_id: 56
+    native_token: BNB
+    explorer: https://bscscan.com
+    dex:
+      - pancakeswap_v2
+      - pancakeswap_v3
+
+  polygon:
+    name: Polygon PoS
+    chain_id: 137
+    native_token: MATIC
+    explorer: https://polygonscan.com
+    dex:
+      - quickswap
+      - uniswap_v3
+
+  arbitrum:
+    name: Arbitrum One
+    chain_id: 42161
+    native_token: ETH
+    explorer: https://arbiscan.io
+    dex:
+      - camelot
+      - uniswap_v3
+
+  base:
+    name: Base
+    chain_id: 8453
+    native_token: ETH
+    explorer: https://basescan.org
+    dex:
+      - aerodrome
+      - uniswap_v3

@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  guardian:
+    build: .
+    container_name: defi-guardian-ai
+    env_file: .env
+    depends_on:
+      - redis
+      - postgres
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs
+
+  redis:
+    image: redis:7-alpine
+    container_name: guardian-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: guardian-postgres
+    environment:
+      POSTGRES_DB: defi_guardian
+      POSTGRES_USER: guardian
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-guardian_secret}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  redis_data:
+  pg_data:
